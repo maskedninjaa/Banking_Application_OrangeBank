@@ -8,10 +8,6 @@ public class Account {
     private double balance; // balance of the account
     private double amount; // amount variable used to deposit and withdraw money from the account
 
-    public Account() {
-        // empty constructor
-    }
-
     public Account(String account) {
         this.account = account;
     }

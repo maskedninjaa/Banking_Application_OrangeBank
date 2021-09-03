@@ -24,9 +24,9 @@ public class OrangeBank {
 
         String clientName = "";
 
-        Account checkingAccount = new Account();
+        Account checkingAccount = new Account("");
 
-        Account savingsAccount = new Account();
+        Account savingsAccount = new Account("");
 
         String accessExistingAccount;
 
@@ -66,8 +66,7 @@ public class OrangeBank {
                                 if (accessAccount.equals("n")) { // for new accounts
                                     System.out.println("Please create a new account! Press 'c' for a new checking account, or 's' for a new savings account!");
                                     String accountType = input.nextLine(); // creates a new account of type checking or savings
-                                    if (accountType.equals("c")) {
-                                        // *need to prevent making a new checking account if it already exists*
+                                    if (accountType.equals("c") && checkingAccount.getAccount().isEmpty()) { // prevents making a new checking account if it already exists
                                         checkingAccount = new Account("checking");
                                         do {
                                             System.out.println();
@@ -85,8 +84,7 @@ public class OrangeBank {
                                             }
                                         } while (action != 4);
                                     }
-                                    if (accountType.equals("s")) {
-                                        // *need to prevent making a new savings account if it already exists*
+                                    if (accountType.equals("s") && savingsAccount.getAccount().isEmpty()) { // prevents making a new savings account if it already exists
                                         savingsAccount = new Account("savings");
                                         do {
                                             System.out.println();
