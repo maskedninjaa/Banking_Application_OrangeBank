@@ -37,7 +37,6 @@ public class OrangeBank {
         try {
             while (x == 0) { // outer loop
                 System.out.println("Press 1 to create an account, Press 2 to login, 3 to exit the application, and 0 to come back to this menu!");
-                // 4 to see all client's registered with the bank
                 x = input.nextInt();
                 input.nextLine();
                 while (x == 1 || x == 2 || x == 3) { // inner loop
