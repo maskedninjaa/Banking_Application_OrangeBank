@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Account {
 
-    private String account; // type of account
+    private final String account; // type of account
     private double balance; // balance of the account
     private double amount; // amount variable used to deposit and withdraw money from the account
 
@@ -19,15 +19,11 @@ public class Account {
                 "\nnew balance = " + balance;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
     // deposit method
     public void deposit() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Enter an amount to deposit: ");
-        amount = scanner.nextDouble();
+        amount = input.nextDouble();
         if (amount >= 0) {
             balance += amount;
         } else {
@@ -37,9 +33,9 @@ public class Account {
 
     // withdraw method
     public void withdraw() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Enter an amount to withdraw: ");
-        amount = scanner.nextDouble(); // if number is negative, give an error message
+        amount = input.nextDouble(); // if number is negative, give an error message
         if (amount <= balance && amount >= 0) {
             balance -= amount;
         } else {

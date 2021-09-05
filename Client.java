@@ -4,14 +4,32 @@ import java.util.Random;
 
 public class Client {
 
-    private String name; // name of the client
+    private final String name; // name of the client
     private int id; // id used to log in
     private String password; // password used to log in
+    private Account checkingAccount;
+    private Account savingsAccount;
 
     public Client(String name) {
         this.name = name; // name of the client
         setId(); // generates a random six-digit ID for the client
         setPassword(); // generates a random ten-digit password for the client
+    }
+
+    public Account getCheckingAccount() {
+        return checkingAccount;
+    }
+
+    public void setCheckingAccount() {
+        this.checkingAccount = new Account("checking");
+    }
+
+    public Account getSavingsAccount() {
+        return savingsAccount;
+    }
+
+    public void setSavingsAccount() {
+        this.savingsAccount = new Account("savings");
     }
 
     @Override
