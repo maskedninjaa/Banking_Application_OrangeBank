@@ -56,6 +56,8 @@ public class OrangeBank {
 
         int x = 0; // Variable for the outer loop/nested loop/switch statement
 
+        String accessAccount, accountType, accessExistingAccount;
+
         // try {
         while (x == 0) { // outer loop
             System.out.println("Press 1 to create an account, Press 2 to login, 3 to exit the application, and 0 to come back to this menu!");
@@ -83,11 +85,12 @@ public class OrangeBank {
                             if (pw.equals(client.getPassword())) {
                                 System.out.println("Welcome " + client.getName() + " !");
                                 System.out.println();
+                                do {
                                     System.out.println("Would you like to make a new account or access an existing one? 'n' for new, 'e' for existing");
-                                    String accessAccount = input.nextLine();
+                                    accessAccount = input.nextLine();
                                     if (accessAccount.equals("n")) { // for new accounts
                                         System.out.println("Please create a new account! Press 'c' for a new checking account, or 's' for a new savings account!");
-                                        String accountType = input.nextLine(); // creates a new account of type checking or savings
+                                        accountType = input.nextLine(); // creates a new account of type checking or savings
                                         if (accountType.equals("c")) {
                                             if (client.getCheckingAccount() == null) { // prevents making a new checking account if it already exists
                                                 client.setCheckingAccount();
@@ -105,37 +108,36 @@ public class OrangeBank {
                                     } else if (accessAccount.equals("e")) { // for existing accounts
                                         if (client.getCheckingAccount() != null || client.getSavingsAccount() != null) { // to ensure at least one account exists
                                             System.out.println("Which account would you like to access? 'c' for checking or 's' for savings");
-                                            String accessExistingAccount = input.nextLine(); // variable used to access existing accounts
+                                            accessExistingAccount = input.nextLine(); // variable used to access existing accounts
                                             if (accessExistingAccount.equals("c") && client.getCheckingAccount() != null) {// to prevent null checking account from being created
                                                 getMenu(client.getCheckingAccount());
                                                 x = 0;
                                             }
                                             if (accessExistingAccount.equals("s") && client.getSavingsAccount() != null) { // to prevent null savings account from being created
-                                                getMenu(client.getCheckingAccount());
+                                                getMenu(client.getSavingsAccount());
                                                 x = 0;
                                             }
                                         } else {
                                             System.out.println();
-                                            System.out.println("You have to create an account first! Press 2 to log in again and make sure to press 'n' this time. Press 0 to return to the main menu.");
-                                            x = input.nextInt();
-                                            input.nextLine();
+                                            System.out.println("You have to create an account first! Make sure to press 'n' this time.");
+                                            System.out.println(); // have to figure this one out...
                                         }
                                     } else {
                                         System.out.println();
-                                        System.out.println("You have to enter 'n' for a new account or 'e' for an existing account! Press 2 to log in again, or 0 to return to the main menu!");
-                                        x = input.nextInt();
-                                        input.nextLine();
+                                        System.out.println("You have to enter 'n' for a new account or 'e' for an existing account!");
+                                        System.out.println();
                                     }
+                                } while((!(accessAccount.equals("n") || accessAccount.equals("e"))));
                             } else { // if password is incorrect
                                 System.out.println();
                                 System.out.println("Sorry, this password is incorrect! Press 2 to try to log in again, press 0 to go back to the main menu!");
                                 x = input.nextInt();
-                                input.nextLine(); // prevents skip
+                                input.nextLine();
                             }
                         } else { // if user ID does not exist or is invalid
                             System.out.println("Sorry this account does not exist! Press 2 to try to log in again, press 0 to go back to the main menu!");
                             x = input.nextInt();
-                            input.nextLine(); // prevents skip
+                            input.nextLine();
                         }
                     }
                     case 3 -> {
