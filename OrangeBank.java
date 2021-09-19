@@ -123,6 +123,8 @@ public class OrangeBank {
                                     } else {
                                         System.out.println();
                                         System.out.println("You have to enter 'n' for a new account or 'e' for an existing account! Press 2 to log in again, or 0 to return to the main menu!");
+                                        x = input.nextInt();
+                                        input.nextLine();
                                     }
                             } else { // if password is incorrect
                                 System.out.println();
