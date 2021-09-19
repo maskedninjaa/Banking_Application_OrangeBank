@@ -92,22 +92,27 @@ public class OrangeBank {
                                             if (client.getCheckingAccount() == null) { // prevents making a new checking account if it already exists
                                                 client.setCheckingAccount();
                                                 getMenu(client.getCheckingAccount());
+                                                x = 0;
                                             }
                                         }
                                         if (accountType.equals("s")) {
                                             if (client.getSavingsAccount() == null) { // prevents making a new savings account if it already exists
                                                 client.setSavingsAccount();
                                                 getMenu(client.getSavingsAccount());
+                                                x = 0;
                                             }
                                         }
                                     } else if (accessAccount.equals("e")) { // for existing accounts
                                         if (client.getCheckingAccount() != null || client.getSavingsAccount() != null) { // to ensure at least one account exists
                                             System.out.println("Which account would you like to access? 'c' for checking or 's' for savings");
                                             String accessExistingAccount = input.nextLine(); // variable used to access existing accounts
-                                            if (accessExistingAccount.equals("c") && client.getCheckingAccount() != null)// to prevent null checking account from being created
+                                            if (accessExistingAccount.equals("c") && client.getCheckingAccount() != null) {// to prevent null checking account from being created
                                                 getMenu(client.getCheckingAccount());
+                                                x = 0;
+                                            }
                                             if (accessExistingAccount.equals("s") && client.getSavingsAccount() != null) { // to prevent null savings account from being created
                                                 getMenu(client.getCheckingAccount());
+                                                x = 0;
                                             }
                                         } else {
                                             System.out.println();
