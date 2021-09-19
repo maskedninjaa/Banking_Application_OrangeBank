@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class OrangeBank {
 
-    // 1. Fix navigation process for entirety of application***
+    // 1. Fix navigation process for entirety of application
 
     // 2. Add ability to transfer between checking and savings account for an individual user
 
@@ -63,7 +63,7 @@ public class OrangeBank {
             System.out.println("Press 1 to create an account, Press 2 to login, 3 to exit the application, and 0 to come back to this menu!");
             x = input.nextInt();
             input.nextLine();
-            while (x == 1 || x == 2 || x == 3 || x == 4) { // inner loop
+            while (x == 1 || x == 2 || x == 3) { // inner loop
                 switch (x) {
                     case 1 -> {
                         System.out.println("Hello, and welcome to Orange Bank! Please provide your full name, and an automatically generated ID/password will be given to you!");
@@ -97,13 +97,16 @@ public class OrangeBank {
                                                 getMenu(client.getCheckingAccount());
                                                 x = 0;
                                             }
-                                        }
-                                        if (accountType.equals("s")) {
+                                        } else if (accountType.equals("s")) {
                                             if (client.getSavingsAccount() == null) { // prevents making a new savings account if it already exists
                                                 client.setSavingsAccount();
                                                 getMenu(client.getSavingsAccount());
                                                 x = 0;
                                             }
+                                        } else {
+                                            System.out.println();
+                                            System.out.println("You entered the wrong input!");
+                                            System.out.println();
                                         }
                                     } else if (accessAccount.equals("e")) { // for existing accounts
                                         if (client.getCheckingAccount() != null || client.getSavingsAccount() != null) { // to ensure at least one account exists
@@ -112,22 +115,25 @@ public class OrangeBank {
                                             if (accessExistingAccount.equals("c") && client.getCheckingAccount() != null) {// to prevent null checking account from being created
                                                 getMenu(client.getCheckingAccount());
                                                 x = 0;
-                                            }
-                                            if (accessExistingAccount.equals("s") && client.getSavingsAccount() != null) { // to prevent null savings account from being created
+                                            } else if (accessExistingAccount.equals("s") && client.getSavingsAccount() != null) { // to prevent null savings account from being created
                                                 getMenu(client.getSavingsAccount());
                                                 x = 0;
+                                            } else {
+                                                System.out.println();
+                                                System.out.println("You entered the wrong input!");
+                                                System.out.println();
                                             }
                                         } else {
                                             System.out.println();
                                             System.out.println("You have to create an account first! Make sure to press 'n' this time.");
-                                            System.out.println(); // have to figure this one out...
+                                            System.out.println();
                                         }
                                     } else {
                                         System.out.println();
                                         System.out.println("You have to enter 'n' for a new account or 'e' for an existing account!");
                                         System.out.println();
                                     }
-                                } while((!(accessAccount.equals("n") || accessAccount.equals("e"))));
+                                } while (x == 2);
                             } else { // if password is incorrect
                                 System.out.println();
                                 System.out.println("Sorry, this password is incorrect! Press 2 to try to log in again, press 0 to go back to the main menu!");
@@ -135,7 +141,7 @@ public class OrangeBank {
                                 input.nextLine();
                             }
                         } else { // if user ID does not exist or is invalid
-                            System.out.println("Sorry this account does not exist! Press 2 to try to log in again, press 0 to go back to the main menu!");
+                            System.out.println("Sorry, this account either does not exist, or the user ID provided is invalid! Press 2 to try to log in again, press 0 to go back to the main menu!");
                             x = input.nextInt();
                             input.nextLine();
                         }
