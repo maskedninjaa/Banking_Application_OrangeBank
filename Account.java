@@ -6,7 +6,6 @@ public class Account {
 
     private final String account; // type of account
     private double balance; // balance of the account
-    private double amount; // amount variable used to deposit and withdraw money from the account
 
     public Account(String account) {
         this.account = account;
@@ -23,7 +22,15 @@ public class Account {
     public void deposit() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter an amount to deposit: ");
-        amount = input.nextDouble();
+        double amount = input.nextDouble(); // amount variable used to deposit and withdraw money from the account
+        if (amount >= 0) {
+            balance += amount;
+        } else {
+            System.out.println("Sorry, negative values are invalid");
+        }
+    }
+
+    public void add(double amount) {
         if (amount >= 0) {
             balance += amount;
         } else {
@@ -35,11 +42,21 @@ public class Account {
     public void withdraw() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter an amount to withdraw: ");
-        amount = input.nextDouble(); // if number is negative, give an error message
+        double amount = input.nextDouble(); // if number is negative, give an error message
         if (amount <= balance && amount >= 0) {
             balance -= amount;
         } else {
             System.out.println("Sorry, negative values are invalid");
+        }
+    }
+
+    public boolean remove(double amount) {
+        if (amount <= balance && amount >= 0) {
+            balance -= amount;
+            return true;
+        } else {
+            System.out.println("Sorry, negative values are invalid");
+            return false;
         }
     }
 }

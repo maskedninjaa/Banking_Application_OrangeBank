@@ -53,7 +53,6 @@ public class Client {
         int max = 999999;
         int min = 100000;
         this.id = randomID.nextInt((max - min) + 1) + min;
-
     }
 
     public String getPassword() {

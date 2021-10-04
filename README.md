@@ -1,4 +1,4 @@
 # Banking_Application_OrangeBank
 
-I've put in a lot of time into this, but it still needs many improvements.
-I did a lot of it from scratch, but I did look up a few concepts that I couldn't figure out on my own such as creating a password.
+I have worked on this a lot and learned a lot from it, but still need to add improvements.
+My friend helped guide me in the right direction whenever I wasn't sure what to do.
